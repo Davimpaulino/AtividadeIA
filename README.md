@@ -10,8 +10,8 @@ Aplicação em **Node.js + Express** no padrão **MVC** que faz o CRUD de **Clie
 | Item | URL |
 |---|---|
 | GitHub | https://github.com/Davimpaulino/AtividadeIA |
-| API no Render | `https://SEU-PROJETO.onrender.com/api/clientes` |
-| Expo Snack | `https://snack.expo.dev/@SEU-USUARIO/...` |
+| API no Render | (https://atividadeia-it6z.onrender.com)` |
+| Expo Snack | (https://snack.expo.dev/@davimpaulino/atividadeia) |
 
 ## Estrutura (MVC)
 
@@ -25,8 +25,7 @@ routes/clienteRoutes.js         # rotas das telas  -> /clientes
 routes/clienteApiRoutes.js      # rotas da API     -> /api/clientes
 views/                          # Views EJS + Bootstrap
 data/clientes.json              # "banco" em arquivo JSON
-expo/App.js                     # código do app para colar no Expo Snack
-test/api.test.js                # testes da API (npm test)
+
 ```
 
 ## API REST
