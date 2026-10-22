@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Clientes</title>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+    <div class="container py-4">
+
+        <!-- FORMULÁRIO -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="mb-3"><%= clienteEditar ? '✏️ Editar' : '➕ Novo' %> Cliente</h5>
+
+                <% if (erros.length) { %>
+                    <div class="alert alert-danger py-2">
+                        <% erros.forEach(e => { %><div><%= e %></div><% }) %>
+                    </div>
+                <% } %>
+
+                <form action="<%= clienteEditar ? '/clientes/editar/' + clienteEditar.id : '/clientes/salvar' %>" method="POST">
+                    <% if (clienteEditar) { %>
+                        <div class="mb-3">
+                            <label class="form-label">ID</label>
+                            <input type="text" class="form-control" value="<%= clienteEditar.id %>" disabled>
+                        </div>
+                    <% } %>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" class="form-control form-control-lg" required minlength="3"
+                               value="<%= form.nome || '' %>" placeholder="Ex.: Maria Silva">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="email">E-mail</label>
+                        <input type="email" id="email" name="email" class="form-control form-control-lg" required
+                               value="<%= form.email || '' %>" placeholder="Ex.: maria@email.com">
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-<%= clienteEditar ? 'success' : 'primary' %>">
+                            <%= clienteEditar ? 'Atualizar' : 'Salvar' %>
+                        </button>
+                        <% if (clienteEditar) { %>
+                            <a href="/clientes" class="btn btn-secondary">Cancelar</a>
+                        <% } %>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- LISTAGEM -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">👥 Clientes</h4>
+            <span class="badge text-bg-dark"><%= clientes.length %></span>
+        </div>
+
+        <% if (!clientes.length) { %>
+            <div class="alert alert-light border text-center">Nenhum cliente cadastrado.</div>
+        <% } %>
+
+        <!-- DESKTOP -->
+        <% if (clientes.length) { %>
+        <div class="d-none d-md-block">
+            <table class="table table-bordered table-hover bg-white">
+                <thead class="table-dark">
+                    <tr>
+                        <th width="80">ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th width="120">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% clientes.forEach(cli => { %>
+                        <tr>
+                            <td><%= cli.id %></td>
+                            <td><%= cli.nome %></td>
+                            <td><%= cli.email %></td>
+                            <td class="text-nowrap">
+                                <a href="/clientes/editar/<%= cli.id %>" class="btn btn-warning btn-sm" title="Editar">✏️</a>
+                                <form action="/clientes/excluir/<%= cli.id %>" method="POST" class="d-inline"
+                                      onsubmit="return confirm('Deseja excluir este cliente?')">
+                                    <button class="btn btn-danger btn-sm" title="Excluir">🗑️</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <% } %>
+
+        <!-- MOBILE -->
+        <div class="d-md-none">
+            <% clientes.forEach(cli => { %>
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-1"><%= cli.nome %></h5>
+                        <p class="card-text text-muted mb-1"><%= cli.email %></p>
+                        <p class="card-text small text-muted">ID: <%= cli.id %></p>
+                        <div class="d-grid gap-2">
+                            <a href="/clientes/editar/<%= cli.id %>" class="btn btn-warning btn-sm">✏️ Editar</a>
+                            <form action="/clientes/excluir/<%= cli.id %>" method="POST" class="d-grid"
+                                  onsubmit="return confirm('Deseja excluir este cliente?')">
+                                <button class="btn btn-danger btn-sm">❌ Excluir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <a href="/" class="btn btn-secondary w-100 mt-3">Voltar</a>
+    </div>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

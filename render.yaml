@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: crud-clientes-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api

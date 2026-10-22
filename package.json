@@ -1,0 +1,28 @@
+{
+  "name": "crud-clientes-api",
+  "version": "1.0.0",
+  "description": "CRUD de Clientes em Node.js + Express (MVC) com API REST consumida por app React Native (Expo Snack)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "node test/api.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["nodejs", "express", "mvc", "crud", "api", "render", "expo"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  },
+  "optionalDependencies": {
+    "firebase-admin": "^13.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

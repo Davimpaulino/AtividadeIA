@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title><%= titulo %></title>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="container py-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-2">CRUD de Clientes</h1>
+                <p class="text-muted mb-3">
+                    Aplicação em Node.js + Express no padrão MVC com API REST.
+                    Cadastro com os campos <strong>id</strong>, <strong>nome</strong> e <strong>email</strong>.
+                </p>
+                <span class="badge text-bg-success">API online</span>
+                <span class="badge text-bg-secondary">armazenamento: <%= armazenamento %></span>
+                <div class="d-grid d-sm-flex gap-2 mt-4">
+                    <a href="/clientes" class="btn btn-primary">Gerenciar clientes</a>
+                    <a href="/api/clientes" target="_blank" class="btn btn-outline-dark">Ver JSON da API</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h5 mb-3">Endpoints da API REST</h2>
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr><th>Operação</th><th>Método</th><th>URL</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Listar</td><td><span class="badge text-bg-primary">GET</span></td><td><code><%= baseUrl %>/api/clientes</code></td></tr>
+                            <tr><td>Consultar</td><td><span class="badge text-bg-primary">GET</span></td><td><code><%= baseUrl %>/api/clientes/:id</code></td></tr>
+                            <tr><td>Cadastrar</td><td><span class="badge text-bg-success">POST</span></td><td><code><%= baseUrl %>/api/clientes</code></td></tr>
+                            <tr><td>Alterar</td><td><span class="badge text-bg-warning">PUT</span></td><td><code><%= baseUrl %>/api/clientes/:id</code></td></tr>
+                            <tr><td>Excluir</td><td><span class="badge text-bg-danger">DELETE</span></td><td><code><%= baseUrl %>/api/clientes/:id</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="small text-muted mt-3 mb-0">
+                    Corpo JSON para cadastrar/alterar: <code>{ "nome": "Maria Silva", "email": "maria@email.com" }</code>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
