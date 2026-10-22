@@ -73,7 +73,8 @@ Acesse http://localhost:3000 (telas) e http://localhost:3000/api/clientes (JSON)
 1. Abra https://snack.expo.dev.
 2. Cole o conteúdo de `expo/App.js` no `App.js` do Snack.
 3. Troque `SEU-PROJETO` na constante `API_URL` pela URL do Render.
-4. O app lista os clientes da API e também permite cadastrar, editar e excluir.
+4. O app **apenas lê** a API e mostra a lista de clientes (puxe para baixo ou toque em "Atualizar" para recarregar).
+   O cadastro, a alteração e a exclusão são feitos pelo site, em `/clientes`.
 
 ## Tecnologias
 
